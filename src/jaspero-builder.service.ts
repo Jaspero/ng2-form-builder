@@ -28,7 +28,6 @@ export class JasperoBuilder {
     ) {}
 
     buildFb(objFromStore: Object, originalObj: Object): Object {
-        console.log('this iis the store: ', store);
         let final: any = {};
         for (let key in objFromStore) final[key] = typeof objFromStore[key] === 'string' ? this._fb.group(this.buildFb(store[objFromStore[key]], originalObj[key])) : this._setValue(objFromStore[key], originalObj[key]);
         return final;
