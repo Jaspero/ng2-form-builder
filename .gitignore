@@ -4,3 +4,44 @@ coverage
 yarn.lock
 npm-debug.log
 bundles
+
+# Node Files #
+examples/webpack/node_modules/
+examples/webpack/bower_components/
+examples/webpack/npm-debug.log
+examples/webpack/npm-debug.log.*
+
+# Coverage #
+examples/webpack/coverage/
+
+# Typing #
+examples/webpack/src/typings/tsd/
+examples/webpack/typings/
+examples/webpack/tsd_typings/
+
+# Dist #
+examples/webpack/dist
+examples/webpack/public/__build__/
+examples/webpack/src/*/__build__/
+examples/webpack/__build__/**
+examples/webpack/public/dist/
+examples/webpack/src/*/dist/
+examples/webpack/dist/**
+examples/webpack/.awcache
+examples/webpack.webpack.json
+examples/webpack/compiled/
+examples/webpackdll/
+
+# Doc #
+examples/webpack/doc/
+
+# IDE #
+examples/webpack/.idea/
+examples/webpack*.swp
+
+
+# Angular #
+examples/webpack*.ngfactory.ts
+examples/webpack*.css.shim.ts
+examples/webpack*.ngsummary.json
+examples/webpack*.shim.ngstyle.ts
