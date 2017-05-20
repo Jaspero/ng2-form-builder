@@ -1,1 +1,1 @@
-export let store = {};
+export let ngFormBuilderStore = {};

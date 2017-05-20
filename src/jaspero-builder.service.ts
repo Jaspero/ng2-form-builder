@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {IOptions} from './interfaces/options';
-import {store} from './store';
+import {ngFormBuilderStore} from './store';
 import 'reflect-metadata';
 
 @Injectable()
@@ -18,8 +18,8 @@ export class JasperoBuilder {
 
             if (typeof t.name === 'string' && JasperoBuilder.baseTypes.indexOf(t.name) === -1)  toSet = t.name;
 
-            if (store[cn]) store[cn][key] = toSet;
-            else store[cn] = {[key]: toSet};
+            if (ngFormBuilderStore[cn]) ngFormBuilderStore[cn][key] = toSet;
+            else ngFormBuilderStore[cn] = {[key]: toSet};
         }
     }
 
@@ -29,12 +29,12 @@ export class JasperoBuilder {
 
     buildFb(objFromStore: Object, originalObj: Object): Object {
         let final: any = {};
-        for (let key in objFromStore) final[key] = typeof objFromStore[key] === 'string' ? this._fb.group(this.buildFb(store[objFromStore[key]], originalObj[key])) : this._setValue(objFromStore[key], originalObj[key]);
+        for (let key in objFromStore) final[key] = typeof objFromStore[key] === 'string' ? this._fb.group(this.buildFb(ngFormBuilderStore[objFromStore[key]], originalObj[key])) : this._setValue(objFromStore[key], originalObj[key]);
         return final;
     }
 
     createForm(cls: Object): FormGroup {
-        return this._fb.group(this.buildFb(store[cls.constructor.name], cls))
+        return this._fb.group(this.buildFb(ngFormBuilderStore[cls.constructor.name], cls))
     }
 
     private _setValue(fromStore: IOptions, originalObject: Object): any {
